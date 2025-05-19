@@ -7,6 +7,8 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 
 */
 
+
+
 #include "iostream"
 #include "raylib.h"
 #include <string>
@@ -15,6 +17,8 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 #include "Player.h"
 #include "Sidekick.h"
 #include <vector>
+// es válido usarlo porque estamos desarrollando con el namespace de neustro juego
+using namespace LoW;
 
 int main ()
 {
@@ -51,7 +55,7 @@ int main ()
 	sidekick->speed = 199.0f;
 	gameObjects.push_back(sidekick);
 
-	Sidekick* sidekick2 = new Sidekick({ 800, 600 }, "Bar", LoadTexture("sidekick.png"));
+	Sidekick* sidekick2 = new Sidekick({ 800, 600 }, "Bar", LoadTexture("dogo.png"));
 	sidekick2->owner = playerCharacter;
 	sidekick2->displayName = true;
 	sidekick2->speed = 190.0f;
@@ -85,11 +89,7 @@ int main ()
 		{
 			obj->update();
 		}
-		for (GameObject* obj : gameObjects)
-		{
-			obj->draw();
-		}
-
+		
 		// drawing
 		BeginDrawing();
 
@@ -99,8 +99,14 @@ int main ()
 		// draw some text using the default font
 		DrawText("Ejemplo de Juego con GameObjects", 10,10,24, YELLOW);
 
-		DrawRectangle(GetScreenWidth() / 2, GetScreenHeight() / 2, 50, 30, RED);
-		DrawCircle(GetScreenWidth() * .25, GetScreenHeight() * .25f, 30, GREEN);
+		for (GameObject* obj : gameObjects)
+		{
+			obj->draw();
+		}
+
+
+		//DrawRectangle(GetScreenWidth() / 2, GetScreenHeight() / 2, 50, 30, RED);
+		//DrawCircle(GetScreenWidth() * .25, GetScreenHeight() * .25f, 30, GREEN);
 
 		// draw our texture to the screen
 		/*for (size_t i = 0; i < 20; i++)

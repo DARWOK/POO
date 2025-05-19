@@ -1,5 +1,7 @@
 #include "Sidekick.h"
 
+using namespace LoW;
+
 void Sidekick::update()
 {
 	if (owner != nullptr)
